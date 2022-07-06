@@ -1,4 +1,4 @@
-# DNS Achievements
+# FA2 Smart contract template
 
 
 # Requiremets
