@@ -8,7 +8,7 @@ import { confirmOperation } from "./confirmation";
 
 import env from "../env";
 
-const isDockerizedLigo = false
+const isDockerizedLigo = true
 
 export const getLigo = (
   isDockerizedLigo: boolean,
@@ -69,7 +69,7 @@ export const compile = async (
     const michelson: string = execSync(
       `${ligo} compile contract $PWD/${contractsDir}/${contract}.ligo ${
         format === "json" ? "--michelson-format json" : ""
-      } --protocol hangzhou`,
+      } --protocol kathmandu`,
       { maxBuffer: 1024 * 500 }
     ).toString();
 
@@ -119,7 +119,7 @@ export const compileLambdas = async (
   try {
     for (const lambda of lambdas) {
       const michelson = execSync(
-        `${ligo} compile expression pascaligo 'Bytes.pack(${lambda.name})' --michelson-format json --init-file $PWD/${contract} --protocol hangzhou`,
+        `${ligo} compile expression pascaligo 'Bytes.pack(${lambda.name})' --michelson-format json --init-file $PWD/${contract} --protocol kathmandu`,
         { maxBuffer: 1024 * 500 }
       ).toString();
 
